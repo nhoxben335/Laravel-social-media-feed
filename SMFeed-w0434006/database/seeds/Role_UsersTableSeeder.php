@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RolesTableSeeder extends Seeder
+class Role_UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,23 +14,23 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         // insert roles data
-        DB::table('roles')->insert([
-            'name' => 'User Administrator',
-            'description' => 'Managers Admin Users',
+        DB::table('role_user')->insert([
+            'user_id' => '1',
+            'role_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        DB::table('roles')->insert([
-            'name' => 'Moderator',
-            'description' => 'Moderates Posts',
+        DB::table('role_user')->insert([
+            'user_id' => '2',
+            'role_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        DB::table('roles')->insert([
-            'name' => 'Theme Manager',
-            'description' => 'Manages Themes',
+        DB::table('role_user')->insert([
+            'user_id' => '3',
+            'role_id' => '3',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

@@ -1,6 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,6 +14,32 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // insert users data
+        // Jane
+        DB::table('users')->insert([
+            'name' => 'Jane UserAdmin',
+            'email' => 'Jane@example.com',
+            'password' => Hash::make('inet2005'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        // Bob
+        DB::table('users')->insert([
+            'name' => 'Bob Moderator',
+            'email' => 'Bob@example.com',
+            'password' => Hash::make('inet2005'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        // Susan
+        DB::table('users')->insert([
+            'name' => 'Susan ThemeAdmin',
+            'email' => 'Susan@example.com',
+            'password' => Hash::make('inet2005'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
     }
 }

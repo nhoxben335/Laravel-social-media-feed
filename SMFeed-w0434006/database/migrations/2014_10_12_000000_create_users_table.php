@@ -17,11 +17,12 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->unsignedBigInteger("deleted_by")->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken()->nullable();
+            $table->unsignedBigInteger("deleted_by")->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger("deleted_at")->nullable();
 
             $table->foreign("deleted_by")
                 ->references("id")
