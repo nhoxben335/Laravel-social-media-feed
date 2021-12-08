@@ -16,10 +16,14 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->string('title');
-            $table->unsignedBigInteger("create_by")->nullable();
+            $table->unsignedBigInteger("created_by")->nullable();
             $table->unsignedBigInteger("deleted_by")->nullable();
 
             $table->timestamps();
+
+            $table->foreign("created_by")
+                ->references("id")
+                ->on("users");
 
             $table->foreign("deleted_by")
                 ->references("id")
@@ -29,7 +33,6 @@ class CreatePostsTable extends Migration
 
     /**
      * Reverse the migrations.
-
      *
      * @return void
      */
