@@ -20,8 +20,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Jane UserAdmin',
             'email' => 'Jane@example.com',
             'password' => Hash::make('inet2005'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         // Bob
@@ -29,8 +29,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Bob Moderator',
             'email' => 'Bob@example.com',
             'password' => Hash::make('inet2005'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         // Susan
@@ -38,8 +38,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Susan ThemeAdmin',
             'email' => 'Susan@example.com',
             'password' => Hash::make('inet2005'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }

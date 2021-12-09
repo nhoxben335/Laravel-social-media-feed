@@ -15,24 +15,24 @@ class RolesTableSeeder extends Seeder
     {
         // insert roles data
         DB::table('roles')->insert([
-            'name' => 'User Administrator',
+            'name' => 'UserController Administrator',
             'description' => 'Managers Admin Users',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         DB::table('roles')->insert([
             'name' => 'Moderator',
             'description' => 'Moderates Posts',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         DB::table('roles')->insert([
             'name' => 'Theme Manager',
             'description' => 'Manages Themes',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }
