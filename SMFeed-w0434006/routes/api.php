@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user_folder', function (Request $request) {
+Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });

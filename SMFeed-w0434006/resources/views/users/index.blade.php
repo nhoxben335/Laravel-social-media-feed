@@ -8,10 +8,11 @@
                     <div class="card-header">User Adminstration </div>
 
                     <div class="card-body">
-                        <form action="/admin" method="post"
-
-                        @csrf
-
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <a href="" class="container-fluid btn btn-dark" style="text-align: center"> Create New Admin User </a>
                     </div>
                 </div>
@@ -25,24 +26,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($users as $user)
                     <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>  </td>
                         <td>d</td>
                     </tr>
-                    <tr>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                        <td>h</td>
-                    </tr>
-                    <tr>
-                        <td>i</td>
-                        <td>j</td>
-                        <td>k</td>
-                        <td>l</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
