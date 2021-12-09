@@ -13,26 +13,36 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <a href="" class="container-fluid btn btn-dark" style="text-align: center"> Create New Admin User </a>
+                        <a href="admin/users/create" class="container-fluid btn btn-dark" style="text-align: center"> Create New Admin User </a>
                     </div>
                 </div>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Actions</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>  </td>
-                        <td>d</td>
-                    </tr>
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            @foreach($user->roles as $role)
+                            <td>{{ $role->name }}</td>
+                            @endforeach
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-md btn-success" href="/admin/users/{{ $user->id }}" role="button">Show</a>
+                                    <a class="btn btn-warning" href="/adminusers/{{ $user->id }}/edit" role="button">Edit</a>
+                                        @method('DELETE')
+                                        @csrf
+                                    <a href="/admin/users/{{$user->id}}" type="submit" class="btn btn-danger" method="post">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

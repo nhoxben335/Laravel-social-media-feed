@@ -15,7 +15,6 @@ class UserController extends Controller
     public function index() //display all users
     {
         $users = User::all();
-
         return view('users.index', compact('users'));
     }
 
@@ -26,7 +25,7 @@ class UserController extends Controller
      */
     public function create() //send back a form to create new user
     {
-        return 'create'; //temporary
+        return 'users.create'; //temporary
     }
 
     /**
