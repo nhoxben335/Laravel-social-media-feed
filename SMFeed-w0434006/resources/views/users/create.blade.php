@@ -13,8 +13,29 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        <form method="post" action="admin/users/{{ $user->id }}">
+                            @csrf
 
-                    <!-- form goes here -->
+                            @method('PUT')
+
+                            <div class="form-group">
+                                <label for="title">Name:</label>
+                                <input type="text" class="form-control" name="title" id="post_title" value={{ $user->name }}>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Email:</label>
+                                <textarea name="body" id="post_body" class="form-control">{{ $user->email }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Role:</label>
+                                <textarea name="body" id="post_body" class="form-control"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+
+
+
                 </div>
             </div>
         </div>

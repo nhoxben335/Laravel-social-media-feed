@@ -23,9 +23,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() //send back a form to create new user
+    public function create(User $user) //send back a form to create new user
     {
-        return 'users.create'; //temporary
+        return view('users.create', compact('user'));
     }
 
     /**
@@ -47,9 +47,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) //display one user
+    public function show(User $user) //display one user
     {
-        return 'show'; //temporary
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -58,9 +58,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) //send a form to edit a user prefilled with the user data
+    public function edit(User $user) //send a form to edit a user prefilled with the user data
     {
-        return 'edit'; //temporary
+        $roles = \App\Role::all();
+        return view('users.edit')->with([
+            'user' => $user,
+            'roles' => $roles,
+        ]);
     }
 
     /**
@@ -70,11 +74,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) //save the changes from the edit form
+    public function update(Request $request, User $user) //save the changes from the edit form
     {
-        //save the data
-        //redirect to the users list page (index)
-        return 'update'; //temporary
+        $user->roles()->sync($request->roles);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -83,10 +87,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) //delete a user
+    public function destroy(User $user) //delete a user
     {
         //delete user
         //redirect
-        return 'destroy'; //temporary
+        $user->roles()->detach();
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }

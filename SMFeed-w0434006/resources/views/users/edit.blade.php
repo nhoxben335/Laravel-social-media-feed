@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    <!-- form goes here -->
+                    <form action="{{ route('users.update', $user) }}" method="POST">
+                        @csrf
+                        {{ method_field('PUT') }}
+                        @foreach($roles as $role)
+                            <div type="form-check">
+                            <input type="checkbox" name="roles[]" value="{{ $role->id }}">
+                            <label>{{ $role->name }}</label>
+                            </div>
+                        @endforeach
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+
                 </div>
             </div>
         </div>

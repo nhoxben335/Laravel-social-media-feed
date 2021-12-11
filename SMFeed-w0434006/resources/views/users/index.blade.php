@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <a href="admin/users/create" class="container-fluid btn btn-dark" style="text-align: center"> Create New Admin User </a>
+                        <a href="/admin/users/create" class="container-fluid btn btn-dark" style="text-align: center"> Create New Admin User </a>
                     </div>
                 </div>
                 <table class="table">
@@ -30,16 +30,19 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            @foreach($user->roles as $role)
-                            <td>{{ $role->name }}</td>
-                            @endforeach
+                            <td>{{ implode(',', $user->roles()->get()->pluck('name')->toArray()) }}</td>
+{{--                            @foreach($user->roles as $role)--}}
+{{--                            <td>{{ $role->name }}</td>--}}
+{{--                            @endforeach--}}
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-md btn-success" href="/admin/users/{{ $user->id }}" role="button">Show</a>
-                                    <a class="btn btn-warning" href="/adminusers/{{ $user->id }}/edit" role="button">Edit</a>
-                                        @method('DELETE')
+                                    <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
+                                    <form action="{{ route('users.destroy', $user ) }}" method="POST">
                                         @csrf
-                                    <a href="/admin/users/{{$user->id}}" type="submit" class="btn btn-danger" method="post">Delete</a>
+                                    {{ method_field('DELETE') }}
+{{--                                    <a href="/admin/users/{{ $user->id }}/destroy" type="submit" class="btn btn-danger" method="post">Delete</a>--}}
+                                    </form> <button type="button" class="btn btn-danger">Delete</button>
                                 </div>
                             </td>
                         </tr>
