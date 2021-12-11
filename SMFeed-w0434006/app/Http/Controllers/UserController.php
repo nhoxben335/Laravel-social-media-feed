@@ -25,6 +25,8 @@ class UserController extends Controller
      */
     public function create(User $user) //send back a form to create new user
     {
+        $user = User::find($user);
+
         return view('users.create', compact('user'));
     }
 
@@ -77,6 +79,10 @@ class UserController extends Controller
     public function update(Request $request, User $user) //save the changes from the edit form
     {
         $user->roles()->sync($request->roles);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
 
         return redirect()->route('users.index');
     }

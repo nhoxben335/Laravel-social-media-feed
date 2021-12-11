@@ -28,7 +28,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="price">Role:</label>
-                                <textarea name="body" id="post_body" class="form-control"></textarea>
+                                    @foreach($roles as $role)
+
+                                    @endforeach
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update</button>
