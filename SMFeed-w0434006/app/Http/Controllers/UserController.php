@@ -41,9 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request) //save the submitted user data to save new user
     {
-        return 'store'; //temporary
-        //save the submitted data
-        //redirect when done (to index)
+        $user = new User();
     }
 
     /**
@@ -97,15 +95,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user) //delete a user
+    public function destroy($id) //delete a user
     {
         //delete user
         //redirect
-        $user = \App\User::find($user);
-        if($user->delete()){
-            DB::table('users')->where('id', $user->id)
-                ->update(array('deleted_by'=> Auth::user()->id));
-        };
+        $user = User::find($id);
+        $user->deleted();
+
         session()->flash('status', 'The user is successfully deleted');
         return redirect()->route('users.index');
     }

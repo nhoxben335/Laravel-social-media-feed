@@ -78,8 +78,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $postId)
     {
-        //
+        $post =Post::where('id', $postId)->first();
+        $post->deleted();
+        $post['deleted_by'] = Autho::user()->id;
+
+        session()->flash('status', 'The user is successfully deleted');
+        return redirect()->route('users.index');
     }
 }

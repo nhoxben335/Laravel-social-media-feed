@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger("created_by")->nullable();
             $table->unsignedBigInteger("deleted_by")->nullable();
-
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign("created_by")

@@ -40,9 +40,9 @@
                                     <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
                                     <form action="{{ route('users.destroy', $user ) }}" method="POST">
                                         @csrf
-                                    {{ method_field('DELETE') }}
-{{--                                    <a href="/admin/users/{{ $user->id }}/destroy" type="submit" class="btn btn-danger" method="post">Delete</a>--}}
-                                    </form> <button type="button" class="btn btn-danger">Delete</button>
+                                    <a href="/admin/users/{{ $user->id }}/destroy" type="submit" class="btn btn-danger" method="post">Delete</a>
+                                    </form>
+                                    <button type="button" class="btn btn-danger">Delete</button>
                                 </div>
                             </td>
                         </tr>
