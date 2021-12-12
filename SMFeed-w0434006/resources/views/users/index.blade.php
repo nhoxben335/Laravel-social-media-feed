@@ -39,10 +39,11 @@
                                     <a class="btn btn-md btn-success" href="/admin/users/{{ $user->id }}" role="button">Show</a>
                                     <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
                                     <form action="{{ route('users.destroy', $user ) }}" method="POST">
+                                        @method('DELETE')
                                         @csrf
-                                    <a href="/admin/users/{{ $user->id }}/destroy" type="submit" class="btn btn-danger" method="post">Delete</a>
+{{--                                    {{ method_field('DELETE') }}--}}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                    <button type="button" class="btn btn-danger">Delete</button>
                                 </div>
                             </td>
                         </tr>

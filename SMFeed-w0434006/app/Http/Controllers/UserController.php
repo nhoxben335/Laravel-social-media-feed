@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create(User $user) //send back a form to create new user
     {
 //        return view('users.create', compact('user'));
+        // save the data from database
         $roles = \App\Role::all();
         return view('users.create')->with([
             'user' => $user,
@@ -41,7 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request) //save the submitted user data to save new user
     {
-        $user = new User();
+
     }
 
     /**
@@ -100,9 +101,10 @@ class UserController extends Controller
         //delete user
         //redirect
         $user = User::find($id);
-        $user->deleted();
+        $user->delete();
 
         session()->flash('status', 'The user is successfully deleted');
         return redirect()->route('users.index');
+
     }
 }

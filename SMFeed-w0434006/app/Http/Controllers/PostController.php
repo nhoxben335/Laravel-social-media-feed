@@ -82,7 +82,7 @@ class PostController extends Controller
     {
         $post =Post::where('id', $postId)->first();
         $post->deleted();
-        $post['deleted_by'] = Autho::user()->id;
+        $post['deleted_by'] = Auth::user()->id;
 
         session()->flash('status', 'The user is successfully deleted');
         return redirect()->route('users.index');

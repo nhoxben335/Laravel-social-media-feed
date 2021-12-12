@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <form action="/users/{{ $user->id }}/create" method="post">
+                        <form action="/users/create" method="post">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-2 col-form-label text-md-right">Name: </label>
@@ -43,38 +43,61 @@
                                 </div>
                             </div>
 
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="password" class="col-md-2 col-form-label text-md-right">Password: </label>--}}
+
+{{--                                <div class="col-md-6">--}}
+{{--                                    <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="" required autocomplete="name" autofocus>--}}
+
+{{--                                    @error('name')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="confirm-password" class="col-md-2 col-form-label text-md-right">Confirm Password: </label>--}}
+
+{{--                                <div class="col-md-6">--}}
+{{--                                        <input id="confirm-password" type="text" class="form-control @error('confirm-password') is-invalid @enderror" name="confirm-password" value="" required autocomplete="name" autofocus>--}}
+
+{{--                                    @error('confirm-password')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
                             <div class="form-group row">
-                                <label for="password" class="col-md-2 col-form-label text-md-right">Password: </label>
+                                <label for="password" class="col-md-2 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="" required autocomplete="name" autofocus>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                    @error('name')
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="confirm-password" class="col-md-2 col-form-label text-md-right">Confirm Password: </label>
+                                <label for="password" class="col-md-2 col-form-label text-md-right">Confirm Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="confirm-password" type="text" class="form-control @error('confirm-password') is-invalid @enderror" name="confirm-password" value="" required autocomplete="name" autofocus>
-
-                                    @error('confirm-password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password">
                                 </div>
                             </div>
 
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group row">
-                                <label for="roles" class="col-md-2 col-form-label text-md-right">Roles: </label>
+                                <label for="rol  es" class="col-md-2 col-form-label text-md-right">Roles: </label>
 
                                 <div class="col-md-6">
                                     @foreach($roles as $role)
@@ -83,8 +106,8 @@
                                             <label>{{ $role->name }}</label>
                                         </div>
                                     @endforeach
+                                        <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create</button>
                             </div>
                         </form>
                 </div>

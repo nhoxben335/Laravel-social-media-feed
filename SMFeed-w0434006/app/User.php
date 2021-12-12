@@ -39,11 +39,15 @@ class User extends Authenticatable{
     ];
     use SoftDeletes;
 
-    public function roles(){
+
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Role::class);
     }
 
-    public function posts(){
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(Post::class);
     }
+
 }

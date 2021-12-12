@@ -25,10 +25,9 @@
                             <br>
                                 <a class="btn btn-md btn-primary" href="/admin/users" role="button">Back to User List</a>
                                 <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
-
                                 @method('DELETE')
                                 @csrf
-                                <a href="/admin/users/{{$user->id}}" type="submit" class="btn btn-danger" method="post">Delete</a>
+                                <a href="{{ route('users.destroy', $user ) }}" type="submit" class="btn btn-danger" method="post">Delete</a>
                             </div>
                     </div>
                 </div>

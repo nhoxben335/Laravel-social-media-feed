@@ -57,9 +57,17 @@
                                     </div>
                             @endforeach
                             </div>
-                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
+                        <div class="btn-group">
+                            <a class="btn btn-md btn-success" href="/admin/users/{{ $user->id }}" role="button">Show</a>
+                            <form action="{{ route('users.destroy', $user ) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                {{--                                    {{ method_field('DELETE') }}--}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
