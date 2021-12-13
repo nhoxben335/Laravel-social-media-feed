@@ -12,13 +12,13 @@
                 <div class="card">
                     <div class="card-header">Edit User</div>
                     <div class="card-body">
-                        <form action="/home/manage/{{$user->id}}" method="post">
+                        <form action="/admin/users/{{$user->id}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <fieldset>
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input name="name" type="text" class="form-control" value="{{$users->name}}" id="name">
+                                        <input name="name" type="text" class="form-control" value="{{$user->name}}" id="name">
                                         @error("name")
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror
@@ -26,7 +26,7 @@
 
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input name="email" type="text" class="form-control" value="{{$users->email}}" id="email">
+                                        <input name="email" type="text" class="form-control" value="{{$user->email}}" id="email">
                                         @error("email")
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror

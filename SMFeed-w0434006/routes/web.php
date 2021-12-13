@@ -20,11 +20,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get("/admin/users", "UserController@index");
 Route::get("/admin/users/{user}", "UserController@show");
-Route::get("/admin/users/create", "UserController@create");
+Route::get("/admin/create", "UserController@create");
 Route::post("/admin/users", "UserController@store");
 Route::get("/admin/users/{user}/edit", "UserController@edit");
 Route::post("/admin/users/{user}", "UserController@update");
 Route::post("/admin/users/{user}/delete", "UserController@delete");
+
+
 
 
 

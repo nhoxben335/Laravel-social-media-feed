@@ -11,9 +11,9 @@
                 <div class="card">
                     <div class="card-header" style="text-align: center;">Manage Users</div>
                     @php
-                        echo "<a href='/admin/users/create' style='text-align:center;'><button class='btn btn-primary' >Create user</button></a>";
+                        echo "<a href='/admin/create' style='text-align:center;'><button class='btn btn-primary' >Create user</button></a>";
                     @endphp
-                    <div class="card-body">
+                    <div class="card-body" style="text-align: center">
                         @php
                             use Illuminate\Support\Facades\DB;
                             use Illuminate\Support\Facades\Auth;
@@ -26,7 +26,7 @@
                                 //if not soft delete
                                 if(DB::table("users")->where("id", "=", $userId)->whereNull("deleted_at")->first() !== null)
                                 {
-                                    //get user object with id x and add to array
+                                    //get user object with id and add it to the array
                                     $activeUser = DB::table("users")->where("id", "=", $userId)->first();
                                     array_push($activeUsers, $activeUser);
                                 }
@@ -55,13 +55,14 @@
                                 //if current user is user admin: show edit and delete buttons
                                 if($isUserAdmin)
                                 {
-                                    $showEdit .= "<a href='/admin/users/" . $user->id . "/edit'><button class='btn btn-warning'>Edit</button></a>";
+                                    $showEdit .= "<a href='/admin/users/" . $user->id . "/edit'>
+                                                  <button class='btn btn-warning'>Edit</button></a>";
                                     $showDelete .= "<form action='/admin/users/" . $user->id . "/delete' method='post'>"
                                         . csrf_field() . "<button class='btn btn-danger'>Delete</button></form>";
                                 }
 
                                 echo "<div>
-                                        <h6>" . $user->email . "</h6>
+                                        <h6>" . $user->name . "</h6>
                                         <a href='/admin/users/" . $user->id . "'><button class='btn btn-primary'>Show</button></a>"
                                         . $showEdit . $showDelete
                                     . "</div><br><br>";

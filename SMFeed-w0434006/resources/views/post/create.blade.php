@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">Create New User</div>
                     <div class="card-body">
-                        <form action="/admin/users" method="post">
+                        <form action="/home/manage" method="post">
                             @csrf
                             <div class="form-group">
                                 <fieldset>
