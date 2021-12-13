@@ -14,8 +14,7 @@ class UserController extends Controller
      */
     public function index() //display all users
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        return view("users.index");
     }
 
     /**
@@ -23,7 +22,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() //send back a form to create new user
+    public function create(User  $users) //send back a form to create new user
     {
 //        return view('users.create', compact('user'));
         // save the data from database
@@ -39,7 +38,6 @@ class UserController extends Controller
      */
     public function store() //save the submitted user data to save new user
     {
-        return redirect('/admin/users');
     }
 
     /**
@@ -48,9 +46,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user) //display one user
+    public function show(User $users) //display one user
     {
-        return view('users.show', compact('user'));
+        return view("users.show", compact("users"));
     }
 
     /**
@@ -61,11 +59,7 @@ class UserController extends Controller
      */
     public function edit(User $user) //send a form to edit a user prefilled with the user data
     {
-        $roles = \App\Role::all();
-        return view('users.edit')->with([
-            'user' => $user,
-            'roles' => $roles,
-        ]);
+
     }
 
     /**
@@ -77,14 +71,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user) //save the changes from the edit form
     {
-        $user->roles()->sync($request->roles);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-
-        session()->flash('status', 'The user is successfully updated');
-        return redirect()->route('users.index');
     }
 
     /**
@@ -97,11 +84,6 @@ class UserController extends Controller
     {
         //delete user
         //redirect
-        $user = User::find($id);
-        $user->delete();
-
-        session()->flash('status', 'The user is successfully deleted');
-        return redirect()->route('users.index');
 
     }
 }

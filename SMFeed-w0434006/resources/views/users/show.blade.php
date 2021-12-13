@@ -1,34 +1,20 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if(session()->has('message'))
+                    <div class="alert {{session('alert') ?? 'alert-info'}}">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div class="card">
-                    <div class="card-header">User Detail</div>
-
+                    <div class="card-header">User: {{$users->name}}</div>
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                    @endif
-
-                        Name: {{ $user->name }}
-                            <br>
-                        Email: {{ $user->email }}
-                            <br>
-                            @foreach($user->roles as $role)
-                        Current Role: {{ $role->name }}
-                            @endforeach
-                            <br>
-                            <br>
-                                <a class="btn btn-md btn-primary" href="/admin/users" role="button">Back to User List</a>
-                                <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
-                                @method('DELETE')
-                                @csrf
-{{--                                <a href="{{ route('users.destroy', $user ) }}" type="submit" class="btn btn-danger" method="post">Delete</a>--}}
-                            </div>
+                        ID: {{$users->id}}<br>
+                        Name: {{$users->name}}<br>
+                        Email: {{$users->email}}<br>
+                        Roles: {{$users->roles}}
                     </div>
                 </div>
             </div>
