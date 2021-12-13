@@ -104,10 +104,6 @@ class UserController extends Controller
         }
 
         $user->update($data);
-
-
-        session()->flash('status', 'The user is successfully updated');
-        return redirect("/admin/users");
     }
 
     /**
@@ -116,13 +112,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) //delete a user
+    public function delete(User $user) //delete a user
         //delete user
         //redirect
         {
             //delete user
             //redirect
-            $user = User::find($id);
+            $user->deleted_by = Auth::id();
+            $user->save();
             $user->delete();
 
             session()->flash('status', 'The user is successfully deleted');

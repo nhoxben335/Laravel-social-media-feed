@@ -57,8 +57,8 @@
                                 {
                                     $showEdit .= "<a href='/admin/users/" . $user->id . "/edit'>
                                                   <button class='btn btn-warning'>Edit</button></a>";
-                                    $showDelete .= "<form action='/admin/users/" . $user->id . "/delete' method='post'>"
-                                        . csrf_field() . "<button class='btn btn-danger'>Delete</button></form>";
+                                    $showDelete .= "<a href='/admin/users/" . $user->id . "/delete' method='post'>"
+                                        . csrf_field() . "<button class='btn btn-danger'>Delete</button><a>";
                                 }
 
                                 echo "<div>
