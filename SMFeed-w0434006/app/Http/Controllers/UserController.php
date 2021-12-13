@@ -121,8 +121,6 @@ class UserController extends Controller
             $user->deleted_by = Auth::id();
             $user->save();
             $user->delete();
-
-            session()->flash('status', 'The user is successfully deleted');
             return redirect("/admin/users");
         }
 }
