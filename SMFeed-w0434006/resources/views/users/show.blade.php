@@ -14,6 +14,7 @@
                             </div>
                         @endif
 
+
                         Name: {{ $user->name }}
                         <br>
                         Email: {{ $user->email }}
