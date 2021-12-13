@@ -23,15 +23,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user) //send back a form to create new user
+    public function create() //send back a form to create new user
     {
 //        return view('users.create', compact('user'));
         // save the data from database
-        $roles = \App\Role::all();
-        return view('users.create')->with([
-            'user' => $user,
-            'roles' => $roles,
-        ]);
+//        $roles = \App\Role::all();
+        return view('users.create');
     }
 
     /**
@@ -40,9 +37,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //save the submitted user data to save new user
+    public function store() //save the submitted user data to save new user
     {
-
+        return redirect('/admin/users');
     }
 
     /**

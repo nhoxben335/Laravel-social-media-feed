@@ -38,7 +38,7 @@
                                 <div class="btn-group">
                                     <a class="btn btn-md btn-success" href="/admin/users/{{ $user->id }}" role="button">Show</a>
                                     <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
-                                    <form action="{{ route('users.destroy', $user ) }}" method="POST">
+{{--                                    <form action="{{ route('users.destroy', $user ) }}" method="POST">--}}
                                         @method('DELETE')
                                         @csrf
 {{--                                    {{ method_field('DELETE') }}--}}

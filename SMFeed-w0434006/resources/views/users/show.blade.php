@@ -27,7 +27,7 @@
                                 <a class="btn btn-warning" href="/admin/users/{{ $user->id }}/edit" role="button">Edit</a>
                                 @method('DELETE')
                                 @csrf
-                                <a href="{{ route('users.destroy', $user ) }}" type="submit" class="btn btn-danger" method="post">Delete</a>
+{{--                                <a href="{{ route('users.destroy', $user ) }}" type="submit" class="btn btn-danger" method="post">Delete</a>--}}
                             </div>
                     </div>
                 </div>
