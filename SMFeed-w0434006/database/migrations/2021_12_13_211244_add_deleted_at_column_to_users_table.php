@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtColumnToThemesTable extends Migration
+class AddDeletedAtColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddDeletedAtColumnToThemesTable extends Migration
      */
     public function up()
     {
-        Schema::table('themes', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->timestamp("deleted_at")->nullable();
         });
     }
@@ -25,8 +25,8 @@ class AddDeletedAtColumnToThemesTable extends Migration
      */
     public function down()
     {
-        Schema::table('themes', function (Blueprint $table) {
-            $table->timestamp("deleted_at")->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn("deleted_at");
         });
     }
 }

@@ -4,87 +4,66 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view("post.listPosts");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view("post.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $data = request()->validate([
+            "title" => "required",
+            "content" => "required"
+        ]);
+
+        $newPost = new Post();
+        $newPost->title = $data["title"];
+        $newPost->content = $data["content"];
+        $newPost->created_by = Auth::id();
+        $newPost->created_at = Carbon::now();
+        $newPost->updated_at = Carbon::now();
+        $newPost->save();
+
+        return redirect("/home/posts/" . $newPost->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function show(Post $post)
     {
-        //
+        return view("post.show", compact("post"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Post $post)
     {
-        //
+        return view("post.edit", compact("post"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
-        //
+        $data = request()->validate([
+            "title" => "required",
+            "content" => "required"
+        ]);
+
+        $post->updated_at = Carbon::now();
+        $post->update($data);
+        return redirect("/home/posts/" . $post->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $postId)
+    public function delete(Post $post)
     {
-        $post =Post::where('id', $postId)->first();
-        $post->deleted();
-        $post['deleted_by'] = Auth::user()->id;
-
-        session()->flash('status', 'The user is successfully deleted');
-        return redirect()->route('users.index');
+        $post->deleted_by = Auth::id();
+        $post->save();
+        $post->delete();
+        return redirect("/home/posts");
     }
 }
