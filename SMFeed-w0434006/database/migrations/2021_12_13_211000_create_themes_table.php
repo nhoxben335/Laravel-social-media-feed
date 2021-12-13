@@ -44,5 +44,6 @@ class CreateThemesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('themes');
+
     }
 }

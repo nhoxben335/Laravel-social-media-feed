@@ -28,5 +28,6 @@ class AddDeletedAtColumnToPostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn("deleted_at");
         });
+//        Schema::dropIfExists('themes');
     }
 }

@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger("deleted_by")->nullable();
             $table->timestamps();
 //            $table->unsignedBigInteger("deleted_at")->nullable();
-            $table->softDeletes();
 
             $table->foreign("deleted_by")
                 ->references("id")

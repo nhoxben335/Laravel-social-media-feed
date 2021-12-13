@@ -28,5 +28,6 @@ class AddDeletedAtColumnToThemesTable extends Migration
         Schema::table('themes', function (Blueprint $table) {
             $table->timestamp("deleted_at")->nullable();
         });
+//        Schema::dropIfExists('themes');
     }
 }
