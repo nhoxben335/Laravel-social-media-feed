@@ -52,9 +52,13 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-{{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-{{--                                    {{ \Illuminate\Support\Facades\Auth:: }} <span class="caret"></span>--}}
-{{--                                </a>--}}
+                                @foreach(Auth::user()->roles as $role)
+                                    @if($role->id == 1)
+                                <a href="/admin/users" role="button">
+                                    <span class="caret">Manage User</span></a>
+                                    @endif
+
+                                @endforeach
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
