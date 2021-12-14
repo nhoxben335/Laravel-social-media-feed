@@ -13,7 +13,7 @@ class ThemeSeeder extends Seeder
     public function run()
     {
         DB::table("themes")->insert([
-            "name" => "Cosmo",
+            "name" => "A",
             "cdn_url" => "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cosmo/bootstrap.min.css",
             "created_by" => "3",
             "created_at" => now(),
@@ -21,7 +21,7 @@ class ThemeSeeder extends Seeder
         ]);
 
         DB::table("themes")->insert([
-            "name" => "Journal",
+            "name" => "B",
             "cdn_url" => "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/journal/bootstrap.min.css",
             "created_by" => "3",
             "created_at" => now(),
@@ -29,7 +29,7 @@ class ThemeSeeder extends Seeder
         ]);
 
         DB::table("themes")->insert([
-            "name" => "Litera",
+            "name" => "C",
             "cdn_url" => "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css",
             "created_by" => "3",
             "created_at" => now(),
@@ -37,7 +37,7 @@ class ThemeSeeder extends Seeder
         ]);
 
         DB::table("themes")->insert([
-            "name" => "Lumen",
+            "name" => "D",
             "cdn_url" => "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css",
             "created_by" => "3",
             "created_at" => now(),
