@@ -15,7 +15,7 @@
                     //show "create post" button if any user is logged in
                     if(!Auth::guest())
                     {
-                        echo "<a href='/home/posts/create'><button class='btn btn-primary'>Create post</button></a>";
+                        echo "<a href='/home/posts/create'><button class='btn btn-success'>Create post</button></a><hr>";
                     }
 
                     $postsIds = DB::table("posts")->orderBy("created_at", "desc")->pluck("id");
@@ -66,10 +66,10 @@
                         }
 
                         echo "<div class='card'>
-                            <div class='card-header'><h5>" . $post->title . "</h5></div>
+                            <div class='card-header'><h4>" . $post->title . "</h4></div>
                             <div class='card-body'>
-                                <h4>" . $post->content . "</h4>
-                                <h6>" . $post->created_at . "</h6>
+                                <h5>" . $post->content . "</h5>
+                                <h6>" . "Posted " . $post->created_at . "</h6>
                                 <a href='/home/posts/" . $post->id . "'><button class='btn btn-primary'>Show</button></a>
 
                                 " . $showEdit . $showDelete . "

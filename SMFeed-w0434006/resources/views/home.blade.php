@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <a href="/admin/users" class="btn btn-dark" style="text-align: center"> Click Here</a>
+
                 </div>
             </div>
         </div>

@@ -44,6 +44,11 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-warning">Edit</button>
+                            @method('DELETE')
+                            @csrf
+                            <a href="/home/posts" type="submit" class="btn btn-danger" method="post">Delete</a>
+
                         </form>
                     </div>
                 </div>

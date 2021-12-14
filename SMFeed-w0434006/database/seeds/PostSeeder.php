@@ -13,29 +13,29 @@ class PostSeeder extends Seeder
     public function run()
     {
         DB::table("posts")->insert([
-            "title" => "A",
-            "content" => "Hey",
+            "title" => "Shaco champion",
+            "content" => "This is a jungler champion",
             "created_by" => "1",
             "created_at" => now(),
             "updated_at" => now()
         ]);
         DB::table("posts")->insert([
-            "title" => "B",
-            "content" => "Hello",
+            "title" => "Caitlyn champion",
+            "content" => "This is ADC champion",
             "created_by" => "3",
             "created_at" => now(),
             "updated_at" => now()
         ]);
         DB::table("posts")->insert([
-            "title" => "C",
-            "content" => "Hi",
+            "title" => "Yasuo champion",
+            "content" => "This is a skillfull champion",
             "created_by" => "2",
             "created_at" => now(),
             "updated_at" => now()
         ]);
         DB::table("posts")->insert([
-            "title" => "D",
-            "content" => "Sup",
+            "title" => "Zed champion",
+            "content" => "This is assassine champion",
             "created_by" => "4",
             "created_at" => now(),
             "updated_at" => now()

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -10,47 +9,28 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Create New User</div>
+                    <div class="card-header">Create New Post</div>
                     <div class="card-body">
-                        <form action="/home/manage" method="post">
+                        <form action="/home/posts" method="post">
                             @csrf
                             <div class="form-group">
                                 <fieldset>
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input name="name" type="text" class="form-control" value="{{old("name")}}" id="name">
-                                        @error("name")
+                                        <label for="title">Title</label>
+                                        <input name="title" type="text" class="form-control" value="{{old("title")}}" id="title">
+                                        @error("title")
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input name="email" type="text" class="form-control" value="{{old("email")}}" id="email">
-                                        @error("email")
+                                        <label for="content">Content</label>
+                                        <input name="content" type="text" class="form-control" value="{{old("content")}}" id="content">
+                                        @error("content")
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input name="password" type="password" class="form-control" id="password">
-                                        @error("password")
-                                        <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="checkbox" id="admin" name="roles[]" value="1" checked>
-                                        <label for="admin">Administrator</label><br>
-                                        <input type="checkbox" id="mod" name="roles[]" value="2">
-                                        <label for="mod">Moderator</label><br>
-                                        <input type="checkbox" id="themeManager" name="roles[]" value="3">
-                                        <label for="themeManager">Theme Manager</label><br>
                                     </div>
                                 </fieldset>
                             </div>
-
                             <button type="submit" class="btn btn-primary">Create</button>
                         </form>
                     </div>

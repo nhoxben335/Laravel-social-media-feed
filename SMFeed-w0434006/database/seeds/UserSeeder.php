@@ -34,8 +34,8 @@ class UserSeeder extends Seeder
             "updated_at" => now()
         ]);
         DB::table("users")->insert([
-            "name" => "Jong Xina",
-            "email" => "jong@example.com",
+            "name" => "Ben",
+            "email" => "ben@example.com",
             "password" => '$2a$12$3CcXTWpBx9yDBiJwRmgGmOrgm27wmfeTiOW/s1lQbYKN8s5rAp/nq',
             "created_at" => now(),
             "updated_at" => now()

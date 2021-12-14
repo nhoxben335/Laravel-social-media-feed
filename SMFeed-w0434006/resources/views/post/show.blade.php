@@ -12,12 +12,19 @@
                     <div class="card-header">Showing Post: {{$post->id}}</div>
                     <div class="card-body">
 
-                        ID: {{$posts->id}}<br>
-                        Title: {{$posts->title}}<br>
-                        Content: {{$posts->content}}<br>
-                        Created by user with ID: {{$posts->created_by}}<br>
-                        Created at: {{$posts->created_at}}<br>
-                        Updated at: {{$posts->updated_at}}
+                        ID: {{$post->id}}<br>
+                        Title: {{$post->title}}<br>
+                        Content: {{$post->content}}<br>
+                        Created by user with ID: {{$post->created_by}}<br>
+                        Created at: {{$post->created_at}}<br>
+                        Updated at: {{$post->updated_at}}
+                        <br>
+                        <a class="btn btn-md btn-primary" href="/home/posts" role="button">Back to Post List</a>
+                        <a class="btn btn-warning" href="/home/posts{{ $post->id }}/edit" role="button">Edit</a>
+                        @method('DELETE')
+                        @csrf
+                        <a href="/home/posts" type="submit" class="btn btn-danger" method="post">Delete</a>
+
                     </div>
                 </div>
             </div>
