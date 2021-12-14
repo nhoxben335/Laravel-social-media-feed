@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->string('title');
+            $table->string("content");
             $table->unsignedBigInteger("created_by")->nullable();
             $table->unsignedBigInteger("deleted_by")->nullable();
 //            $table->softDeletes();
