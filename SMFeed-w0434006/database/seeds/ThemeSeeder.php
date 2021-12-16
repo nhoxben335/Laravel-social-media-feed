@@ -45,7 +45,7 @@ class ThemeSeeder extends Seeder
         ]);
 
         DB::table("themes")->insert([
-            "name" => "Minty",
+            "name" => "E",
             "cdn_url" => "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/journal/bootstrap.min.css",
             "created_by" => "3",
             "created_at" => now(),

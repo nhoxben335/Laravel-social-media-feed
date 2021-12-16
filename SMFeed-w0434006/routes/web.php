@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::post("/home/posts", "PostController@store");
 Route::get("/home/posts/create", "PostController@create");
+Route::get("/home/themes/create", "ThemeController@create");
+Route::post("/home/themes", "ThemeController@store");
 
 
 Route::get("/admin/users", "UserController@index");
@@ -35,7 +37,11 @@ Route::get("/home/posts/{post}/edit", "PostController@edit");
 Route::post("/home/posts/{post}", "PostController@update");
 Route::post("/home/posts/{post}/delete", "PostController@delete");
 
-
+Route::get("/home/themes", "ThemeController@index");
+Route::get("/home/themes/{theme}", "ThemeController@show");
+Route::get("/home/themes/{theme}/edit", "ThemeController@edit");
+Route::post("/home/themes/{theme}", "ThemeController@update");
+Route::post("/home/themes/{theme}/delete", "ThemeController@delete");
 
 
 

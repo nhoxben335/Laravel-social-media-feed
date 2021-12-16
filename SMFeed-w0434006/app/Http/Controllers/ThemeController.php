@@ -3,83 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Theme;
-use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ThemeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware("IsThemeManager");
+    }
+
     public function index()
     {
-        //
+        return view("theme.listThemes");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view("theme.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $data = request()->validate([
+            "name" => "required",
+            "cdn_url" => "required"
+        ]);
+
+        $newTheme = new Theme();
+        $newTheme->name = $data["name"];
+        $newTheme->cdn_url = $data["cdn_url"];
+        $newTheme->created_by = Auth::id();
+        $newTheme->created_at = Carbon::now();
+        $newTheme->updated_at = Carbon::now();
+        $newTheme->save();
+
+        return redirect("/home/themes/" . $newTheme->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Theme  $theme
-     * @return \Illuminate\Http\Response
-     */
     public function show(Theme $theme)
     {
-        //
+        return view("theme.show", compact("theme"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Theme  $theme
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Theme $theme)
     {
-        //
+        return view("theme.edit", compact("theme"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Theme  $theme
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Theme $theme)
+    public function update(Theme $theme)
     {
-        //
+        $data = request()->validate([
+            "name" => "required",
+            "cdn_url" => "required"
+        ]);
+
+        $theme->updated_at = Carbon::now();
+        $theme->update($data);
+        return redirect("/home/themes/" . $theme->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Theme  $theme
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Theme $theme)
+    public function delete(Theme $theme)
     {
-        //
+        $theme->deleted_by = Auth::id();
+        $theme->save();
+        $theme->delete();
+        return redirect("/home/themes");
     }
 }

@@ -226,7 +226,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         "IsUserAdmin" => \App\Http\Middleware\IsUserAdmin::class,
-
+        "IsThemeManager" => \App\Http\Middleware\IsThemeManager::class
     ],
 
 ];
