@@ -105,7 +105,7 @@
                                     if($row->role_id == 3)
                                     {
                                         echo '<li>
-                                            <a id="manageThemesLink" class="nav-link" href="/users/themes"><span class="caret">Manage Themes</span></a>
+                                            <a id="manageThemesLink" class="nav-link" href="/home/themes"><span class="caret">Manage Themes</span></a>
                                             </li>';
                                         break;
                                     }

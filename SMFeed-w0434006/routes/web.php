@@ -44,6 +44,7 @@ Route::post("/home/themes/{theme}", "ThemeController@update");
 Route::post("/home/themes/{theme}/delete", "ThemeController@delete");
 
 
-
+Route::get("/home/themes/cookie", "CookieController@getCookie");
+Route::post("/home/themes/cookie", "CookieController@setCookie");
 
 

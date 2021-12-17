@@ -16,5 +16,11 @@ class EnforceHttps
      */
     public function handle($request, Closure $next)
     {
+        if (App::environment("production") && !$request->secure())
+        {
+            return redirect()->secure($request->getRequestUri());
+        }
+
+        return $next($request);
     }
 }
