@@ -10,4 +10,5 @@ class Theme extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
 }
